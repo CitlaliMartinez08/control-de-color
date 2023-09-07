@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Tonalidad de Color</title>
+    <!-- Agregamos el enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        #miDiv {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 0, 0); /* Color inicial en rojo */
+        }
+        /* Agregamos estilos personalizados para el footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado con navbar de Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Cambia Color</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Cambiar Tonalidad de Color</h1>
+        <div class="text-center">
+            <div id="miDiv"></div>
+        </div>
+
+        <div class="form-group mt-4">
+            <label for="red">Rojo:</label>
+            <input type="range" class="form-control-range" id="red" min="0" max="255" value="255">
+        </div>
+
+        <div class="form-group">
+            <label for="green">Verde:</label>
+            <input type="range" class="form-control-range" id="green" min="0" max="255" value="0">
+        </div>
+
+        <div class="form-group">
+            <label for="blue">Azul:</label>
+            <input type="range" class="form-control-range" id="blue" min="0" max="255" value="0">
+        </div>
+    </div>
+
+    <!-- Pie de página con datos de copyright -->
+    <footer>
+        &copy; 2023 Tu Nombre. Todos los derechos reservados.
+    </footer>
+
+    <!-- Agregamos los enlaces a los scripts de Bootstrap y jQuery (necesario para Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        const redRange = document.getElementById('red');
+        const greenRange = document.getElementById('green');
+        const blueRange = document.getElementById('blue');
+        const miDiv = document.getElementById('miDiv');
+
+        function actualizarColor() {
+            const redValue = redRange.value;
+            const greenValue = greenRange.value;
+            const blueValue = blueRange.value;
+            const colorRGB = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+            miDiv.style.backgroundColor = colorRGB;
+        }
+
+        redRange.addEventListener('input', actualizarColor);
+        greenRange.addEventListener('input', actualizarColor);
+        blueRange.addEventListener('input', actualizarColor);
+    </script>
+</body>
+</html>
